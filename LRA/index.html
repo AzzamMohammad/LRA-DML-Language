@@ -1,0 +1,106 @@
+PAGE p2
+{
+start body
+out : Text(type:i,title:"rida madi {{name ,pass,rida}} RIDA")
+out : BigText(scale:4,title:"rida{{name ,pass}} madi")
+out : Img(path:"asd",alt_text:"asd")
+out : Img(path:"asd")
+out : List(numbered:false,option("rida riida{{name}}ali as as{{madi}}"),option("lana"))
+in :  select(option(title:"as",value:"asasfgf"),option(title:"asasdfgde",value:"asasfgf"),name:"as")
+start form
+in :  field(title:"as",type:email,name:"rida",hint:"asd",required)
+in :  field(title:"as",type:email,name:"rida",hint:"asdad")
+in :  select(option(title:"rida",value:"asasdfgde"),option(title:"madi",value:"asasfgf"),name:"as")
+end form
+link : buttonLink(href:"c1.php",text:"hi word")
+link : simpleLink(href:"c1.php",text:"hi rida")
+link : buttonLink(href:"c1.php")
+link : simpleLink(href:"c1.php")
+link : buttonLink(text:"hi word",href:"c1.php")
+link : simpleLink(text:"hi rida",href:"c1.php")
+end body
+}
+
+CONTROLLER logxin control p2
+{
+server:"localhost"
+user:"root"
+password:""
+db_name:"lec5"
+insert(name,pass) user
+select(name,pass,email,role) user
+go p1(role:user:ali)
+go p5()
+if (valid(email) login)
+{
+go p2(role:user:name:email)
+go p3(role:admin:email)
+}
+}
+
+
+
+
+
+CONTROLLER c1 control loogin
+{
+server:"localhost"
+user:"root"
+password:""
+db_name:"lec5"
+go p2(role:user:pass:email)
+go p3(role:admin:pass:email)
+}
+
+
+PAGE loogin
+{
+start body
+start form
+in :  field(title:"send",type:submit,name:"rida",hint:"send")
+end form
+end body
+}
+
+
+
+
+
+
+
+
+
+PAGE pa5
+{
+start body
+start form
+in :  field(title:"email",type:email,name:"email",hint:"asd",required)
+in :  field(title:"password",type:password,name:"password",hint:"asdad")
+in :  field(title:"send",type:submit,name:"send",hint:"asdad")
+end form
+end body
+}
+CONTROLLER check control pa5
+{
+server:"localhost"
+user:"root"
+password:""
+db_name:"lec5"
+if (valid(email) students)
+{
+go p2()
+}
+}
+
+PAGE name_page {
+
+start body
+
+out : BigText(scale:4,title:"numbered of car : {{numbered_car}}")
+
+end body
+
+}
+
+
+

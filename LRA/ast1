@@ -1,0 +1,35 @@
+PAGE login
+{
+start body
+out : BigText(scale:4,title:"SIGN UP")
+start form
+in :  field(title:"enter your email",type:email,name:"email",hint:"@gamil.com",required)
+in :  field(title:"enter your password",type:password,name:"password",hint:"at lest 8 ch")
+in :  field(title:"send",type:submit,name:"5")
+end form
+link : simpleLink(href:"forgot.php",text:"forgot the password")
+end body
+}
+
+CONTROLLER c8 control login
+{
+ server:"localhost"
+ user:"root"
+ password:""
+ db_name:"lec5"
+if (valid(email,password) users)
+  {
+    select(email,password,number_of_car) users
+    go show_information()
+  }
+}
+
+PAGE show_information
+{
+start body
+
+out : Text(type:p,title:"number of cars : {{number_of_car}}")
+
+link : buttonLink(href:"login.php",text:"Back")
+end body
+}
